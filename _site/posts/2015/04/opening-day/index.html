@@ -218,7 +218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 27, 2023</p>
+      <p class="date-modified">February 24, 2023</p>
     </div>
   </div>
     
@@ -1150,147 +1150,145 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Opening Day"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2015-04-09</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> today </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> 2023-02-24 </span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [baseball, code, ]</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "max-scherzer-031215.jpg"</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="an">fig-cap-location:</span><span class="co"> margin</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="an">tbl-cap-location:</span><span class="co"> margin</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span><span class="co"> </span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">  freeze: false</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>In honor of Opening Day (and the Nats' loss), I wanted to see which teams have had the most success on opening day. </span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>In honor of Opening Day (and the Nats' loss), I wanted to see which teams have had the most success on opening day. </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>It's...the Mets (?)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>It's...the Mets (?)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-openingday-winpct</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Opening Day Records, 1980 -- 2014"</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, requests, zipfile, io</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, Markdown</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itables <span class="im">import</span> show</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>DOWNLOADFROMRS <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"gl"</span>):</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    os.makedirs(<span class="st">"gl"</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DOWNLOADFROMRS:</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(<span class="st">"https://www.retrosheet.org/CurrentNames.csv"</span>)</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"gl/CurrentNames.csv"</span>,<span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="st">"current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state</span><span class="ch">\r\n</span><span class="st">"</span>)</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        f.write(r.text)</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co">From https://www.retrosheet.org/Nickname.htm:</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co">The fields are:</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co">Current franchise ID</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">Franchise ID (may the same as current one) for earlier data</span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">League</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">Division (blank before divisional play)</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co">Location name (e.g. Brooklyn, Texas)</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co">Nickname</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co">Alternate nicknames (blank if none for the period)</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co">Date of the first game with this combination</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co">Date of the last game with combination (blank if current one)</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co">City</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co">State</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DOWNLOADFROMRS:</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(<span class="st">"https://www.retrosheet.org/gamelogs/glfields.txt"</span>)</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"gl/glfields.txt"</span>,<span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        f.write(r.text)</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DOWNLOADFROMRS:</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1980</span>,<span class="dv">2015</span>):</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>        zip_file_url <span class="op">=</span> <span class="ss">f"https://www.retrosheet.org/gamelogs/gl</span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">.zip"</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(zip_file_url)</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> zipfile.ZipFile(io.BytesIO(r.content))</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>        z.extractall(<span class="st">"gl"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-openingday-winpct</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Opening Day Records, 1980 -- 2014"</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, requests, zipfile, io</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, Markdown</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itables <span class="im">import</span> show</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>DOWNLOADFROMRS <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"gl"</span>):</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    os.makedirs(<span class="st">"gl"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DOWNLOADFROMRS:</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(<span class="st">"https://www.retrosheet.org/CurrentNames.csv"</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"gl/CurrentNames.csv"</span>,<span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="st">"current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state</span><span class="ch">\r\n</span><span class="st">"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        f.write(r.text)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co">From https://www.retrosheet.org/Nickname.htm:</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">The fields are:</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co">Current franchise ID</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">Franchise ID (may the same as current one) for earlier data</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co">League</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">Division (blank before divisional play)</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">Location name (e.g. Brooklyn, Texas)</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">Nickname</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co">Alternate nicknames (blank if none for the period)</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co">Date of the first game with this combination</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co">Date of the last game with combination (blank if current one)</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co">City</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co">State</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DOWNLOADFROMRS:</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(<span class="st">"https://www.retrosheet.org/gamelogs/glfields.txt"</span>)</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"gl/glfields.txt"</span>,<span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>        f.write(r.text)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DOWNLOADFROMRS:</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1980</span>,<span class="dv">2015</span>):</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>        zip_file_url <span class="op">=</span> <span class="ss">f"https://www.retrosheet.org/gamelogs/gl</span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">.zip"</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(zip_file_url)</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> zipfile.ZipFile(io.BytesIO(r.content))</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>        z.extractall(<span class="st">"gl"</span>)</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [<span class="st">'date'</span>,<span class="st">'visit_team_id'</span>,<span class="st">'visit_team_league'</span>,<span class="st">'visit_game_number'</span>,<span class="st">'home_team_id'</span>,<span class="st">'home_team_league'</span>,<span class="st">'home_game_number'</span>,<span class="st">'visit_final_score'</span>,<span class="st">'home_final_score'</span>]</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [<span class="st">'date'</span>,<span class="st">'visit_team_id'</span>,<span class="st">'visit_team_league'</span>,<span class="st">'visit_game_number'</span>,<span class="st">'home_team_id'</span>,<span class="st">'home_team_league'</span>,<span class="st">'home_game_number'</span>,<span class="st">'visit_final_score'</span>,<span class="st">'home_final_score'</span>]</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>namefields <span class="op">=</span> [<span class="st">'current_team_id'</span>,<span class="st">'hist_franchise_id'</span>,<span class="st">'league'</span>,<span class="st">'division'</span>,<span class="st">'location'</span>,<span class="st">'nickname'</span>,<span class="st">'alt_nickname'</span>,<span class="st">'first_used'</span>,<span class="st">'last_used'</span>,<span class="st">'city'</span>,<span class="st">'state'</span>]</span>
 <span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>namefields <span class="op">=</span> [<span class="st">'current_team_id'</span>,<span class="st">'hist_franchise_id'</span>,<span class="st">'league'</span>,<span class="st">'division'</span>,<span class="st">'location'</span>,<span class="st">'nickname'</span>,<span class="st">'alt_nickname'</span>,<span class="st">'first_used'</span>,<span class="st">'last_used'</span>,<span class="st">'city'</span>,<span class="st">'state'</span>]</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assign_outcome(row):</span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row.final_score<span class="op">&gt;</span>row.opponent_final_score:</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'W'</span></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row.final_score<span class="op">&lt;</span>row.opponent_final_score:</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'L'</span></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_in_data(year):</span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    dat <span class="op">=</span> pd.read_csv(<span class="st">'gl/GL</span><span class="sc">{}</span><span class="st">.txt'</span>.<span class="bu">format</span>(year), header<span class="op">=</span><span class="va">None</span>,names<span class="op">=</span>fields, usecols<span class="op">=</span>cols, parse_dates<span class="op">=</span>[<span class="st">'date'</span>])</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> dat.loc[dat.visit_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">'opponent_'</span>))</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> dat.loc[dat.home_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">'opponent_'</span>))</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>    games <span class="op">=</span> pd.concat([v,h], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'outcome'</span>] <span class="op">=</span> games.<span class="bu">apply</span>(assign_outcome,axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'season'</span>] <span class="op">=</span> year</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> games</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assign_outcome(row):</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row.final_score<span class="op">&gt;</span>row.opponent_final_score:</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'W'</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row.final_score<span class="op">&lt;</span>row.opponent_final_score:</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'L'</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_in_data(year):</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    dat <span class="op">=</span> pd.read_csv(<span class="st">'gl/GL</span><span class="sc">{}</span><span class="st">.txt'</span>.<span class="bu">format</span>(year), header<span class="op">=</span><span class="va">None</span>,names<span class="op">=</span>fields, usecols<span class="op">=</span>cols, parse_dates<span class="op">=</span>[<span class="st">'date'</span>])</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> dat.loc[dat.visit_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">'opponent_'</span>))</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> dat.loc[dat.home_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">'opponent_'</span>))</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    games <span class="op">=</span> pd.concat([v,h], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'outcome'</span>] <span class="op">=</span> games.<span class="bu">apply</span>(assign_outcome,axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'season'</span>] <span class="op">=</span> year</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> games</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>teamnames <span class="op">=</span> pd.read_csv(<span class="st">'gl/CurrentNames.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'first_used'</span>,<span class="st">'last_used'</span>]) </span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>teamnames <span class="op">=</span> pd.read_csv(<span class="st">'gl/CurrentNames.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'first_used'</span>,<span class="st">'last_used'</span>]) </span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1980</span>,<span class="dv">2015</span>):</span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> read_in_data(year)</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.concat([df,g], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1980</span>,<span class="dv">2015</span>):</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> read_in_data(year)</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.concat([df,g], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>teamsgrouped <span class="op">=</span> df.groupby(<span class="st">'team_id'</span>)</span>
 <span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>teamsgrouped <span class="op">=</span> df.groupby(<span class="st">'team_id'</span>)</span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>pct <span class="op">=</span> teamsgrouped.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.outcome.value_counts()<span class="op">/</span>x.outcome.size).<span class="bu">round</span>(<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>pct <span class="op">=</span> pct.unstack(<span class="dv">1</span>)</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>pct <span class="op">=</span> pct.sort_values(<span class="st">'W'</span>, ascending<span class="op">=</span><span class="va">False</span>) <span class="co">## decent answer here, but let's merge in team names</span></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>pctteamids <span class="op">=</span> <span class="bu">list</span>(pct.index.values)</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>pctteams <span class="op">=</span> teamnames[teamnames.hist_franchise_id.isin(pctteamids)].sort_values(<span class="st">'last_used'</span>).drop_duplicates(subset<span class="op">=</span><span class="st">'hist_franchise_id'</span>,keep<span class="op">=</span><span class="st">"last"</span>)</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>pct <span class="op">=</span> teamsgrouped.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.outcome.value_counts()<span class="op">/</span>x.outcome.size).<span class="bu">round</span>(<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>pct <span class="op">=</span> pct.unstack(<span class="dv">1</span>)</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>pct <span class="op">=</span> pct.sort_values(<span class="st">'W'</span>, ascending<span class="op">=</span><span class="va">False</span>) <span class="co">## decent answer here, but let's merge in team names</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>pctteamids <span class="op">=</span> <span class="bu">list</span>(pct.index.values)</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>pctteams <span class="op">=</span> teamnames[teamnames.hist_franchise_id.isin(pctteamids)].sort_values(<span class="st">'last_used'</span>).drop_duplicates(subset<span class="op">=</span><span class="st">'hist_franchise_id'</span>,keep<span class="op">=</span><span class="st">"last"</span>)</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>finaltable <span class="op">=</span> pct.merge(pctteams, left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).reset_index().assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>]).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>]]</span>
 <span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>finaltable <span class="op">=</span> pct.merge(pctteams, left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).reset_index().assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>]).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>]]</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>HTML(finaltable.to_html(index<span class="op">=</span><span class="va">False</span>))  <span class="co"># alternative to using the itables package</span></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="co"># with pd.option_context("display.float_format", "{:,.1f}%".format):</span></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="co">#     show(finaltable, dom="lrtp", lengthMenu = [5,10,len(finaltable)]) #paging=False to show full table</span></span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>HTML(finaltable.to_html(index<span class="op">=</span><span class="va">False</span>))  <span class="co"># alternative to using the itables package</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="co"># with pd.option_context("display.float_format", "{:,.1f}%".format):</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="co">#     show(finaltable, dom="lrtp", lengthMenu = [5,10,len(finaltable)]) #paging=False to show full table</span></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>Here's how I did it:</span>
 <span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>Here's how I did it:</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>I downloaded<span class="ot">[^fnmanual]</span> game logs from 1980 -- 2014 from <span class="co">[</span><span class="ot">RetroSheet</span><span class="co">](http://www.retrosheet.org/gamelogs/index.html)</span> and wrote the following script to analyze them. The key was changing the "dyadic" structure of the raw game logs (one row contains information about the two teams playing the game) into one that had one row for each team. I did this in the <span class="in">`read_in_data`</span> function:</span>
 <span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>I downloaded<span class="ot">[^fnmanual]</span> game logs from 1980 -- 2014 from <span class="co">[</span><span class="ot">RetroSheet</span><span class="co">](http://www.retrosheet.org/gamelogs/index.html)</span> and wrote the following script to analyze them. The key was changing the "dyadic" structure of the raw game logs (one row contains information about the two teams playing the game) into one that had one row for each team. I did this in the <span class="in">`read_in_data`</span> function:</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_in_data(year):</span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>    dat <span class="op">=</span> pd.read_csv(<span class="st">'gl/GL</span><span class="sc">{}</span><span class="st">.txt'</span>.<span class="bu">format</span>(year), header<span class="op">=</span><span class="va">None</span>,names<span class="op">=</span>fields, usecols<span class="op">=</span>cols, parse_dates<span class="op">=</span>[<span class="st">'date'</span>])</span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> dat.loc[dat.visit_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">'opponent_'</span>))</span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> dat.loc[dat.home_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">'opponent_'</span>))</span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>    games <span class="op">=</span> pd.concat([v,h], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'outcome'</span>] <span class="op">=</span> games.<span class="bu">apply</span>(assign_outcome,axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'season'</span>] <span class="op">=</span> year</span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> games</span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_in_data(year):</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>    dat <span class="op">=</span> pd.read_csv(<span class="st">'gl/GL</span><span class="sc">{}</span><span class="st">.txt'</span>.<span class="bu">format</span>(year), header<span class="op">=</span><span class="va">None</span>,names<span class="op">=</span>fields, usecols<span class="op">=</span>cols, parse_dates<span class="op">=</span>[<span class="st">'date'</span>])</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> dat.loc[dat.visit_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">'opponent_'</span>))</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> dat.loc[dat.home_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">'opponent_'</span>))</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>    games <span class="op">=</span> pd.concat([v,h], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'outcome'</span>] <span class="op">=</span> games.<span class="bu">apply</span>(assign_outcome,axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'season'</span>] <span class="op">=</span> year</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> games</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>Here's an example of one year's worth of gamelog data once it's been run through <span class="in">`read_in_data`</span>. 2014 was a bit of an odd season, since the <span class="co">[</span><span class="ot">Dodgers and the Diamondbacks started their seasons on March 22</span><span class="co">](https://www.mlb.com/schedule/2014-03-22)</span> by <span class="co">[</span><span class="ot">playing three exhibition games in Syndey, Australia</span><span class="co">](https://sabr.org/gamesproj/game/march-22-2014-opening-day-down-under-as-dodgers-defeat-diamondbacks/)</span>. Each team went on to be another team's opening day opponent -- the Dodgers faced the Padres and the Diamondbacks went up against the Giants.</span>
 <span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>Here's an example of one year's worth of gamelog data once it's been run through <span class="in">`read_in_data`</span>. 2014 was a bit of an odd season, since the <span class="co">[</span><span class="ot">Dodgers and the Diamondbacks started their seasons on March 22</span><span class="co">](https://www.mlb.com/schedule/2014-03-22)</span> by <span class="co">[</span><span class="ot">playing three exhibition games in Syndey, Australia</span><span class="co">](https://sabr.org/gamesproj/game/march-22-2014-opening-day-down-under-as-dodgers-defeat-diamondbacks/)</span>. Each team went on to be another team's opening day opponent -- the Dodgers faced the Padres and the Diamondbacks went up against the Giants.</span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>HTML(df[df[<span class="st">'season'</span>] <span class="op">==</span> <span class="dv">2014</span>].sort_values(<span class="st">"date"</span>).drop(columns<span class="op">=</span>[<span class="st">"team_league"</span>, <span class="st">"opponent_team_league"</span>, <span class="st">"season"</span>]).to_html(index<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>HTML(df[df[<span class="st">'season'</span>] <span class="op">==</span> <span class="dv">2014</span>].sort_values(<span class="st">"date"</span>).drop(columns<span class="op">=</span>[<span class="st">"team_league"</span>, <span class="st">"opponent_team_league"</span>, <span class="st">"season"</span>]).to_html(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>The results table includes two teams that have renamed themselves (the Angels and the Marlins), and one that moved and changed names (Expos). I'd like to update my script to deal with these, but should I really lump the Expos in with the Nats?</span>
 <span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>The results table includes two teams that have renamed themselves (the Angels and the Marlins), and one that moved and changed names (Expos). I'd like to update my script to deal with these, but should I really lump the Expos in with the Nats?</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>Also, I was relieved to see the Dodgers and the Giants were tied, at least.</span>
 <span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>Also, I was relieved to see the Dodgers and the Giants were tied, at least.</span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="ot">[^fnmanual]: </span>I did this manually back in 2015, but as I was porting this to the new site, I wrote a script to automatically download and unzip the files.</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a><span class="ot">[^fnmanual]: </span>I did this manually back in 2015, but as I was porting this to the new site, I wrote a script to automatically download and unzip the files.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
