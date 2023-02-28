@@ -1,0 +1,22 @@
+name: /Users/mattspence/projects/mattspence_site/env
+channels:
+  - conda-forge
+dependencies:
+  - jupyter
+  - numpy
+  - pandas
+  - geopandas
+  - pip
+  - matplotlib
+  - bokeh
+  - statsmodels
+  - scipy
+  - cenpy
+  - requests
+  - pymc
+  - pandoc
+  - pip:
+    - pygris
+    - watermark
+    - itables
+prefix: /Users/mattspence/projects/mattspence_site/env

@@ -1,0 +1,142 @@
+---
+title: "Opening Day"
+date: 2015-04-09
+date-modified: 2023-02-24 
+categories: [baseball, code, ]
+image: "max-scherzer-031215.jpg"
+jupyter: python3
+fig-cap-location: margin
+tbl-cap-location: margin
+format: 
+  html: 
+    code-tools: true
+---
+
+In honor of Opening Day (and the Nats' loss), I wanted to see which teams have had the most success on opening day. 
+
+It's...the Mets (?)
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: true
+#| label: tbl-openingday-winpct
+#| tbl-cap: "Opening Day Records, 1980 -- 2014"
+
+import os, requests, zipfile, io
+from IPython.display import HTML, Markdown
+from itables import show
+
+DOWNLOADFROMRS = False
+if not os.path.exists("gl"):
+    os.makedirs("gl")
+if DOWNLOADFROMRS:
+    r = requests.get("https://www.retrosheet.org/CurrentNames.csv")
+    with open("gl/CurrentNames.csv","w") as f:
+        f.write("current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state\r\n")
+        f.write(r.text)
+
+"""
+From https://www.retrosheet.org/Nickname.htm:
+The fields are:
+
+Current franchise ID
+Franchise ID (may the same as current one) for earlier data
+League
+Division (blank before divisional play)
+Location name (e.g. Brooklyn, Texas)
+Nickname
+Alternate nicknames (blank if none for the period)
+Date of the first game with this combination
+Date of the last game with combination (blank if current one)
+City
+State
+"""
+
+if DOWNLOADFROMRS:
+    r = requests.get("https://www.retrosheet.org/gamelogs/glfields.txt")
+    with open("gl/glfields.txt","w") as f:
+        f.write(r.text)
+
+if DOWNLOADFROMRS:
+    for y in range(1980,2015):
+        zip_file_url = f"https://www.retrosheet.org/gamelogs/gl{y}.zip"
+        r = requests.get(zip_file_url)
+        z = zipfile.ZipFile(io.BytesIO(r.content))
+        z.extractall("gl")
+
+import pandas as pd
+
+fields = ['date','visit_team_id','visit_team_league','visit_game_number','home_team_id','home_team_league','home_game_number','visit_final_score','home_final_score']
+cols = [0,3,4,5,6,7,8,9,10]
+
+namefields = ['current_team_id','hist_franchise_id','league','division','location','nickname','alt_nickname','first_used','last_used','city','state']
+
+def assign_outcome(row):
+    if row.final_score>row.opponent_final_score:
+        return 'W'
+    elif row.final_score<row.opponent_final_score:
+        return 'L'
+
+def read_in_data(year):
+    dat = pd.read_csv('gl/GL{}.txt'.format(year), header=None,names=fields, usecols=cols, parse_dates=['date'])
+    v = dat.loc[dat.visit_game_number==1,].rename(columns=lambda x: x.replace('visit_','')).rename(columns=lambda x: x.replace('home_','opponent_'))
+    h = dat.loc[dat.home_game_number==1,].rename(columns=lambda x: x.replace('home_','')).rename(columns=lambda x: x.replace('visit_','opponent_'))
+    games = pd.concat([v,h], ignore_index=True)
+    games['outcome'] = games.apply(assign_outcome,axis=1)
+    games['season'] = year
+    return games
+
+teamnames = pd.read_csv('gl/CurrentNames.csv', parse_dates=['first_used','last_used']) 
+
+df = pd.DataFrame()
+for year in range(1980,2015):
+    g = read_in_data(year)
+    df = pd.concat([df,g], ignore_index=True)
+
+teamsgrouped = df.groupby('team_id')
+
+pct = teamsgrouped.apply(lambda x: x.outcome.value_counts()/x.outcome.size).round(3)*100
+pct = pct.unstack(1)
+pct = pct.sort_values('W', ascending=False) ## decent answer here, but let's merge in team names
+
+pctteamids = list(pct.index.values)
+pctteams = teamnames[teamnames.hist_franchise_id.isin(pctteamids)].sort_values('last_used').drop_duplicates(subset='hist_franchise_id',keep="last")
+
+finaltable = pct.merge(pctteams, left_index=True, right_on='hist_franchise_id', how="left").reset_index().assign(Team = lambda x: x['location'] + " " + x['nickname']).rename(columns={'W':'Wins','L':'Losses'})[['Team','Wins','Losses']]
+
+HTML(finaltable.to_html(index=False))  # alternative to using the itables package
+# with pd.option_context("display.float_format", "{:,.1f}%".format):
+#     show(finaltable, dom="lrtp", lengthMenu = [5,10,len(finaltable)]) #paging=False to show full table
+```
+
+Here's how I did it:
+
+I downloaded[^fnmanual] game logs from 1980 -- 2014 from [RetroSheet](http://www.retrosheet.org/gamelogs/index.html) and wrote the following script to analyze them. The key was changing the "dyadic" structure of the raw game logs (one row contains information about the two teams playing the game) into one that had one row for each team. I did this in the `read_in_data` function:
+
+```{python}
+#| eval: false
+#| echo: true
+#| code-fold: false
+def read_in_data(year):
+    dat = pd.read_csv('gl/GL{}.txt'.format(year), header=None,names=fields, usecols=cols, parse_dates=['date'])
+    v = dat.loc[dat.visit_game_number==1,].rename(columns=lambda x: x.replace('visit_','')).rename(columns=lambda x: x.replace('home_','opponent_'))
+    h = dat.loc[dat.home_game_number==1,].rename(columns=lambda x: x.replace('home_','')).rename(columns=lambda x: x.replace('visit_','opponent_'))
+    games = pd.concat([v,h], ignore_index=True)
+    games['outcome'] = games.apply(assign_outcome,axis=1)
+    games['season'] = year
+    return games
+```
+
+Here's an example of one year's worth of gamelog data once it's been run through `read_in_data`. 2014 was a bit of an odd season, since the [Dodgers and the Diamondbacks started their seasons on March 22](https://www.mlb.com/schedule/2014-03-22) by [playing three exhibition games in Syndey, Australia](https://sabr.org/gamesproj/game/march-22-2014-opening-day-down-under-as-dodgers-defeat-diamondbacks/). Each team went on to be another team's opening day opponent -- the Dodgers faced the Padres and the Diamondbacks went up against the Giants.
+
+```{python}
+#| column: page
+#| echo: false
+HTML(df[df['season'] == 2014].sort_values("date").drop(columns=["team_league", "opponent_team_league", "season"]).to_html(index=False))
+```
+
+The results table includes two teams that have renamed themselves (the Angels and the Marlins), and one that moved and changed names (Expos). I'd like to update my script to deal with these, but should I really lump the Expos in with the Nats?
+
+Also, I was relieved to see the Dodgers and the Giants were tied, at least.
+
+[^fnmanual]: I did this manually back in 2015, but as I was porting this to the new site, I wrote a script to automatically download and unzip the files.

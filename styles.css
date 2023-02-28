@@ -1,0 +1,23 @@
+/* css styles */
+
+/* fix about image height for different widths -- was cutting off bottom of image at smaller widths */
+@media (max-width: 991.98px) {
+    div.quarto-about-broadside .about-main .about-entity {
+        flex-shrink: 0;
+        width: 100%;
+        height: 605px; /*was originally 450px*/
+        margin-bottom: 1.5em;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}   
+@media (max-width: 491.98px) { /*revert to default height at an arbitrary smaller width*/
+    div.quarto-about-broadside .about-main .about-entity {
+        flex-shrink: 0;
+        width: 100%;
+        height: 450px;
+        margin-bottom: 1.5em;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+} 

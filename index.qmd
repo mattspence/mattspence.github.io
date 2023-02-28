@@ -1,0 +1,40 @@
+---
+format: html
+title: "Matt Spence"
+image: profile.jpg
+email-obfuscation: javascript
+about:
+  template: trestles
+  links:
+    - icon: mastodon
+      text: Mastodon
+      href: https://mastodon.social/@mattspence
+      #rel: me
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/matthew-spence-7684863a
+    - icon: github
+      text: Github
+      href: https://github.com/mattspence
+
+---
+
+Hello! My name is Matt Spence, and I am a senior advisor at the [US Census Bureau][USCB] working on special population statistics and disclosure avoidance. <!-- I have copied my recent talks and publications here-->
+
+From 2016 -- 2021, I was the chief of the [Foreign Born Population Branch][FBPB], which collects and publishes data on people born outside the United States.
+
+Before that, I was the program lead for the [Education Demographic, Geographic, and Economic Statistics (EDGE)][EDGE] program, which provides demographic, social, and economic characteristics on schoolchildren and their parents, and I was the director of the [CCD Non-Fiscal Survey][CCD], which gathers information on all schools and school districts in the U.S. I've also worked in the Governments Division of the Census Bureau. 
+
+Before I joined the Census Bureau, I was a Ph.D. candidate in [political science at UCLA][PS UCLA]. My dissertation research was on distributive politics: specifically, on the incidence and patterns of political manipulation of local public goods in India. 
+
+<!--My resume is [here][resume]. -->You can email me [here](mailto:matt@mattspence.com).
+
+My wife, daughters, and I currently live in the DC metro area, and we're doing our best to explore it. Let me know if we should check somewhere out!
+
+
+[USCB]:     https://www.census.gov
+[FBPB]:     https://www.census.gov/topics/population/foreign-born.html
+[EDGE]:     https://nces.ed.gov/programs/edge/
+[CCD]:      https://nces.ed.gov/ccd/
+[PS UCLA]:  https://polisci.ucla.edu
+[resume]:   static/resume.pdf
