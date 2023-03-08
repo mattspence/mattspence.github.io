@@ -1,4 +1,4 @@
-name: /Users/mattspence/projects/mattspence_site/env
+name: /Users/mattspence/projects/mattspence.github.io/env
 channels:
   - conda-forge
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   - pymc
   - pandoc
   - pip:
-    - pygris
+    - pygris[explore]
     - watermark
     - itables
-prefix: /Users/mattspence/projects/mattspence_site/env
+prefix: /Users/mattspence/projects/mattspence.github.io/env
