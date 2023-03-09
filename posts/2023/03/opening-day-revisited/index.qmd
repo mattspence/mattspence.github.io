@@ -37,6 +37,12 @@ YEARSTART, YEAREND = 1980, 2022 # will add +1 to YEAREND for range()
 if not os.path.exists(DATADIR):
     os.makedirs(DATADIR)
 
+if not os.path.exists(os.path.join(DATADIR,"CurrentNames.csv")):
+    r = requests.get("https://www.retrosheet.org/CurrentNames.csv")
+    with open(os.path.join(DATADIR,"CurrentNames.csv"),"w") as f:
+        f.write("current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state\n")
+        f.write(r.text)
+
 for year in range(YEARSTART,YEAREND+1): 
     if not os.path.exists(os.path.join(DATADIR,f"gl{year}.txt")):
         zip_file_url = f"https://www.retrosheet.org/gamelogs/gl{year}.zip"
