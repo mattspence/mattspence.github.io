@@ -9,15 +9,13 @@ website:
     left:
       - href: index.qmd
         text: Home
+      # - href: work/index.qmd
+      #   text: Recent Work
       - href: posts/index.qmd
         text: Posts
     right:
       - icon: github
         href: https://github.com/mattspence
-      - icon: mastodon
-        href: https://mastodon.social/@mattspence
-      # - icon: rss
-        # href: blog.xml
 format:
   html:
     theme: 
