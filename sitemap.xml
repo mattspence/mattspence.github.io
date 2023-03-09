@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://mattspence.github.io/index.html</loc>
+    <lastmod>2023-03-09T16:53:45.988Z</lastmod>
+  </url>
+  <url>
     <loc>https://mattspence.github.io/posts/2015/04/opening-day/index.html</loc>
-    <lastmod>2023-03-08T22:18:33.212Z</lastmod>
+    <lastmod>2023-03-09T16:53:47.932Z</lastmod>
   </url>
   <url>
     <loc>https://mattspence.github.io/posts/index.html</loc>
-    <lastmod>2023-03-08T22:18:34.220Z</lastmod>
+    <lastmod>2023-03-09T16:53:48.476Z</lastmod>
   </url>
   <url>
-    <loc>https://mattspence.github.io/index.html</loc>
-    <lastmod>2023-03-08T22:18:34.540Z</lastmod>
+    <loc>https://mattspence.github.io/posts/2023/03/opening-day-revisited/index.html</loc>
+    <lastmod>2023-03-09T16:53:49.356Z</lastmod>
   </url>
 </urlset>
