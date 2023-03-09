@@ -5,8 +5,8 @@ date-modified: 2023-02-24
 categories: [baseball, code, ]
 image: "max-scherzer-031215.jpg"
 jupyter: python3
-fig-cap-location: margin
-tbl-cap-location: margin
+fig-cap-location: bottom
+tbl-cap-location: top
 format: 
   html: 
     code-tools: true
@@ -23,16 +23,21 @@ It's...the Mets (?)
 #| tbl-cap: "Opening Day Records, 1980 -- 2014"
 
 import os, requests, zipfile, io
-from IPython.display import HTML, Markdown
-from itables import show
+from IPython.display import HTML#, Markdown
+#from itables import show
+import pandas as pd
 
-DOWNLOADFROMRS = False
-if not os.path.exists("gl"):
-    os.makedirs("gl")
+DATADIR = os.path.join(os.getenv("MY_PROJECT_DIR"), "data", "gl") # Using Quarto's _environment.local file (not saved to GitHub) to set the directory where this project lives
+
+if not os.path.exists(DATADIR):
+    os.makedirs(DATADIR)
+
+DOWNLOADFROMRS = True
+
 if DOWNLOADFROMRS:
     r = requests.get("https://www.retrosheet.org/CurrentNames.csv")
-    with open("gl/CurrentNames.csv","w") as f:
-        f.write("current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state\r\n")
+    with open(os.path.join(DATADIR,"CurrentNames.csv"),"w") as f:
+        f.write("current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state\n")
         f.write(r.text)
 
 """
@@ -54,7 +59,7 @@ State
 
 if DOWNLOADFROMRS:
     r = requests.get("https://www.retrosheet.org/gamelogs/glfields.txt")
-    with open("gl/glfields.txt","w") as f:
+    with open(os.path.join(DATADIR, "glfields.txt"),"w") as f:
         f.write(r.text)
 
 if DOWNLOADFROMRS:
@@ -62,9 +67,7 @@ if DOWNLOADFROMRS:
         zip_file_url = f"https://www.retrosheet.org/gamelogs/gl{y}.zip"
         r = requests.get(zip_file_url)
         z = zipfile.ZipFile(io.BytesIO(r.content))
-        z.extractall("gl")
-
-import pandas as pd
+        z.extractall(path=DATADIR)
 
 fields = ['date','visit_team_id','visit_team_league','visit_game_number','home_team_id','home_team_league','home_game_number','visit_final_score','home_final_score']
 cols = [0,3,4,5,6,7,8,9,10]
@@ -78,7 +81,7 @@ def assign_outcome(row):
         return 'L'
 
 def read_in_data(year):
-    dat = pd.read_csv('gl/GL{}.txt'.format(year), header=None,names=fields, usecols=cols, parse_dates=['date'])
+    dat = pd.read_csv(f"{DATADIR}/GL{year}.txt", header=None,names=fields, usecols=cols, parse_dates=['date'])
     v = dat.loc[dat.visit_game_number==1,].rename(columns=lambda x: x.replace('visit_','')).rename(columns=lambda x: x.replace('home_','opponent_'))
     h = dat.loc[dat.home_game_number==1,].rename(columns=lambda x: x.replace('home_','')).rename(columns=lambda x: x.replace('visit_','opponent_'))
     games = pd.concat([v,h], ignore_index=True)
@@ -86,7 +89,7 @@ def read_in_data(year):
     games['season'] = year
     return games
 
-teamnames = pd.read_csv('gl/CurrentNames.csv', parse_dates=['first_used','last_used']) 
+teamnames = pd.read_csv(os.path.join(DATADIR,'CurrentNames.csv'), parse_dates=['first_used','last_used']) 
 
 df = pd.DataFrame()
 for year in range(1980,2015):
@@ -118,7 +121,7 @@ I downloaded[^fnmanual] game logs from 1980 -- 2014 from [RetroSheet](http://www
 #| echo: true
 #| code-fold: false
 def read_in_data(year):
-    dat = pd.read_csv('gl/GL{}.txt'.format(year), header=None,names=fields, usecols=cols, parse_dates=['date'])
+    dat = pd.read_csv(f"{DATADIR}/GL{year}.txt", header=None,names=fields, usecols=cols, parse_dates=['date'])
     v = dat.loc[dat.visit_game_number==1,].rename(columns=lambda x: x.replace('visit_','')).rename(columns=lambda x: x.replace('home_','opponent_'))
     h = dat.loc[dat.home_game_number==1,].rename(columns=lambda x: x.replace('home_','')).rename(columns=lambda x: x.replace('visit_','opponent_'))
     games = pd.concat([v,h], ignore_index=True)
