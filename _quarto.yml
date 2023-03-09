@@ -16,6 +16,9 @@ website:
     right:
       - icon: github
         href: https://github.com/mattspence
+  repo-url: https://github.com/mattspence/mattspence.github.io
+  repo-actions: [edit, issue]
+
 format:
   html:
     theme: 
