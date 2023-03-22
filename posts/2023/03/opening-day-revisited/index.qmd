@@ -16,7 +16,7 @@ format:
 
 I wanted to revisit my [earlier post](../../../2015/04/opening-day/index.qmd) about opening day win-loss statistics to update the numbers with eight additional years of data and also to fix the a few issues that I didn't have the skills to address back in 2015.
 
-First, my old script had separate entries for the two teams that renamed themselves during the period --- the Los Angeles (California) Angels and the Miami (Floria) Marlins. I wanted those combined, no question. I also wondered about what to do with a franchise that renamed itself and moved. Should the Expos and the Nationals really get combined into a single franchise record? 
+First, my old script had separate entries for the two teams that renamed themselves during the period --- the Los Angeles (California) Angels and the Miami (Florida) Marlins. I wanted those combined, no question. I also wondered about what to do with a franchise that renamed itself and moved. Should the Expos and the Nationals really get combined into a single franchise record? 
 
 My first attempts to fix the former and keep the Nats/Expos apart were unsuccessful. I combined the renamed teams by creating the win-loss records by `team_id` (as before), but then merging those with the historical franchise ID (`hist_franchise_id`, as before) *and* bringing over the `current_team_id` as well. 
 
