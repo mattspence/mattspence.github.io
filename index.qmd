@@ -6,10 +6,9 @@ email-obfuscation: javascript
 about:
   template: trestles
   links:
-    - icon: mastodon
-      text: Mastodon
-      href: https://mastodon.social/@mattspence
-      #rel: me
+    - icon: building-fill
+      text: US Census Bureau
+      href: https://www.census.gov/newsroom/bios/matthew-spence.html
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/matthew-spence-7684863a

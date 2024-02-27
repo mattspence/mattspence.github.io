@@ -84,9 +84,9 @@ df = pd.concat(dflist, ignore_index=True, sort=False)
 #     return pd.DataFrame({'count': group.value_counts(),
 #                          'total': group.size})
 
-winpct = (df.groupby('team_id').apply(lambda x: x.outcome.value_counts()/x.outcome.size).round(3)*100)[:,"W"].sort_values(ascending=False)
+winpct = (df.groupby('team_id').apply(lambda x: x.outcome.value_counts()/x.outcome.size, include_groups=False).round(3)*100)[:,"W"].sort_values(ascending=False)
 
-wlcnt = df.groupby('team_id').apply(lambda x: x.outcome.value_counts()).unstack(-1)
+wlcnt = df.groupby('team_id').apply(lambda x: x.outcome.value_counts(), include_groups=False).unstack(-1)
 
 # drop any team name that was last_used before the start of our analysis. 
 # "Drop duplicates" by current_team_id and hist_franchise_id will get rid of divisional changes (e.g. Pirates moving from NL E to NL C in 1994) and minor name changes (TBA Devil Rays --> Rays; Anaheim Angles --> LA Angels)

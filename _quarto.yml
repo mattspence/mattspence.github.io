@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Matt Spence"
-  site-url: https://mattspence.github.io
+  #site-url: https://mattspence.github.io
   description: "This is Matt Spence's personal landing page and occasional blog"
   navbar:
     left:
