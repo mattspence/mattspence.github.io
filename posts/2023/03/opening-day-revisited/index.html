@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,11 +20,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -49,47 +50,17 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -113,7 +84,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -122,12 +99,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -138,39 +117,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Matt Spence</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../index.html">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../posts/index.html">
- <span class="menu-text">Posts</span></a>
+    <a class="nav-link" href="../../../../posts/index.html"> 
+<span class="menu-text">Posts</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mattspence"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mattspence"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -218,13 +197,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
 
+
 <p>I wanted to revisit my <a href="../../../../posts/2015/04/opening-day/index.html">earlier post</a> about opening day win-loss statistics to update the numbers with eight additional years of data and also to fix the a few issues that I didn’t have the skills to address back in 2015.</p>
-<p>First, my old script had separate entries for the two teams that renamed themselves during the period — the Los Angeles (California) Angels and the Miami (Floria) Marlins. I wanted those combined, no question. I also wondered about what to do with a franchise that renamed itself and moved. Should the Expos and the Nationals really get combined into a single franchise record?</p>
+<p>First, my old script had separate entries for the two teams that renamed themselves during the period — the Los Angeles (California) Angels and the Miami (Florida) Marlins. I wanted those combined, no question. I also wondered about what to do with a franchise that renamed itself and moved. Should the Expos and the Nationals really get combined into a single franchise record?</p>
 <p>My first attempts to fix the former and keep the Nats/Expos apart were unsuccessful. I combined the renamed teams by creating the win-loss records by <code>team_id</code> (as before), but then merging those with the historical franchise ID (<code>hist_franchise_id</code>, as before) <em>and</em> bringing over the <code>current_team_id</code> as well.</p>
 <div class="cell" data-execution_count="1">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os, requests, zipfile, io</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, Markdown</span>
@@ -298,480 +279,502 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-70"><a href="#cb1-70"></a></span>
 <span id="cb1-71"><a href="#cb1-71"></a>HTML(finaltable.to_html(index<span class="op">=</span><span class="va">False</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div id="tbl-openingday-winpct" class="anchored">
-
-<table class="dataframe table table-sm table-striped"><caption>Table&nbsp;1:  Opening Day Records, 1980 – 2022 </caption>
-  <thead>
-    <tr>
-      <th>Team</th>
-      <th>Wins</th>
-      <th>Losses</th>
-      <th>Ties</th>
-      <th>Win (%)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>New York Mets</td>
-      <td>31.0</td>
-      <td>12.0</td>
-      <td>0.0</td>
-      <td>72.1</td>
-    </tr>
-    <tr>
-      <td>Baltimore Orioles</td>
-      <td>28.0</td>
-      <td>15.0</td>
-      <td>0.0</td>
-      <td>65.1</td>
-    </tr>
-    <tr>
-      <td>Seattle Mariners</td>
-      <td>26.0</td>
-      <td>17.0</td>
-      <td>0.0</td>
-      <td>60.5</td>
-    </tr>
-    <tr>
-      <td>Chicago White Sox</td>
-      <td>25.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>58.1</td>
-    </tr>
-    <tr>
-      <td>Los Angeles Dodgers</td>
-      <td>25.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>58.1</td>
-    </tr>
-    <tr>
-      <td>Detroit Tigers</td>
-      <td>25.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>58.1</td>
-    </tr>
-    <tr>
-      <td>Cincinnati Reds</td>
-      <td>24.0</td>
-      <td>18.0</td>
-      <td>1.0</td>
-      <td>55.8</td>
-    </tr>
-    <tr>
-      <td>St. Louis Cardinals</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>New York Yankees</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>Toronto Blue Jays</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>San Francisco Giants</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>Houston Astros</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>Colorado Rockies</td>
-      <td>16.0</td>
-      <td>14.0</td>
-      <td>0.0</td>
-      <td>53.3</td>
-    </tr>
-    <tr>
-      <td>Tampa Bay Rays</td>
-      <td>13.0</td>
-      <td>12.0</td>
-      <td>0.0</td>
-      <td>52.0</td>
-    </tr>
-    <tr>
-      <td>Arizona Diamondbacks</td>
-      <td>13.0</td>
-      <td>12.0</td>
-      <td>0.0</td>
-      <td>52.0</td>
-    </tr>
-    <tr>
-      <td>Atlanta Braves</td>
-      <td>22.0</td>
-      <td>21.0</td>
-      <td>0.0</td>
-      <td>51.2</td>
-    </tr>
-    <tr>
-      <td>Milwaukee Brewers</td>
-      <td>22.0</td>
-      <td>20.0</td>
-      <td>1.0</td>
-      <td>51.2</td>
-    </tr>
-    <tr>
-      <td>Chicago Cubs</td>
-      <td>21.0</td>
-      <td>22.0</td>
-      <td>0.0</td>
-      <td>48.8</td>
-    </tr>
-    <tr>
-      <td>Pittsburgh Pirates</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Los Angeles Angels</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Boston Red Sox</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Washington Nationals</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Texas Rangers</td>
-      <td>19.0</td>
-      <td>24.0</td>
-      <td>0.0</td>
-      <td>44.2</td>
-    </tr>
-    <tr>
-      <td>Miami Marlins</td>
-      <td>12.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <td>Philadelphia Phillies</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>Oakland Athletics</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>San Diego Padres</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>Minnesota Twins</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>Cleveland Indians</td>
-      <td>16.0</td>
-      <td>27.0</td>
-      <td>0.0</td>
-      <td>37.2</td>
-    </tr>
-    <tr>
-      <td>Kansas City Royals</td>
-      <td>15.0</td>
-      <td>28.0</td>
-      <td>0.0</td>
-      <td>34.9</td>
-    </tr>
-  </tbody>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_6141/3223961566.py:59: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  winpct = (df.groupby('team_id').apply(lambda x: x.outcome.value_counts()/x.outcome.size).round(3)*100)[:,"W"].sort_values(ascending=False)
+/tmp/ipykernel_6141/3223961566.py:61: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  wlcnt = df.groupby('team_id').apply(lambda x: x.outcome.value_counts()).unstack(-1)</code></pre>
+</div>
+<div id="tbl-openingday-winpct" class="cell quarto-float anchored" data-execution_count="1">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-openingday-winpct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Opening Day Records, 1980 – 2022
+</figcaption>
+<div aria-describedby="tbl-openingday-winpct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<table class="dataframe do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Team</th>
+<th data-quarto-table-cell-role="th">Wins</th>
+<th data-quarto-table-cell-role="th">Losses</th>
+<th data-quarto-table-cell-role="th">Ties</th>
+<th data-quarto-table-cell-role="th">Win (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New York Mets</td>
+<td>31.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>72.1</td>
+</tr>
+<tr class="even">
+<td>Baltimore Orioles</td>
+<td>28.0</td>
+<td>15.0</td>
+<td>0.0</td>
+<td>65.1</td>
+</tr>
+<tr class="odd">
+<td>Seattle Mariners</td>
+<td>26.0</td>
+<td>17.0</td>
+<td>0.0</td>
+<td>60.5</td>
+</tr>
+<tr class="even">
+<td>Chicago White Sox</td>
+<td>25.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>58.1</td>
+</tr>
+<tr class="odd">
+<td>Los Angeles Dodgers</td>
+<td>25.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>58.1</td>
+</tr>
+<tr class="even">
+<td>Detroit Tigers</td>
+<td>25.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>58.1</td>
+</tr>
+<tr class="odd">
+<td>Cincinnati Reds</td>
+<td>24.0</td>
+<td>18.0</td>
+<td>1.0</td>
+<td>55.8</td>
+</tr>
+<tr class="even">
+<td>St. Louis Cardinals</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>New York Yankees</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="even">
+<td>Toronto Blue Jays</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>San Francisco Giants</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="even">
+<td>Houston Astros</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>Colorado Rockies</td>
+<td>16.0</td>
+<td>14.0</td>
+<td>0.0</td>
+<td>53.3</td>
+</tr>
+<tr class="even">
+<td>Tampa Bay Rays</td>
+<td>13.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>52.0</td>
+</tr>
+<tr class="odd">
+<td>Arizona Diamondbacks</td>
+<td>13.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>52.0</td>
+</tr>
+<tr class="even">
+<td>Atlanta Braves</td>
+<td>22.0</td>
+<td>21.0</td>
+<td>0.0</td>
+<td>51.2</td>
+</tr>
+<tr class="odd">
+<td>Milwaukee Brewers</td>
+<td>22.0</td>
+<td>20.0</td>
+<td>1.0</td>
+<td>51.2</td>
+</tr>
+<tr class="even">
+<td>Chicago Cubs</td>
+<td>21.0</td>
+<td>22.0</td>
+<td>0.0</td>
+<td>48.8</td>
+</tr>
+<tr class="odd">
+<td>Pittsburgh Pirates</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="even">
+<td>Los Angeles Angels</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="odd">
+<td>Boston Red Sox</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="even">
+<td>Washington Nationals</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="odd">
+<td>Texas Rangers</td>
+<td>19.0</td>
+<td>24.0</td>
+<td>0.0</td>
+<td>44.2</td>
+</tr>
+<tr class="even">
+<td>Miami Marlins</td>
+<td>12.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>40.0</td>
+</tr>
+<tr class="odd">
+<td>Philadelphia Phillies</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="even">
+<td>Oakland Athletics</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="odd">
+<td>San Diego Padres</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="even">
+<td>Minnesota Twins</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="odd">
+<td>Cleveland Indians</td>
+<td>16.0</td>
+<td>27.0</td>
+<td>0.0</td>
+<td>37.2</td>
+</tr>
+<tr class="even">
+<td>Kansas City Royals</td>
+<td>15.0</td>
+<td>28.0</td>
+<td>0.0</td>
+<td>34.9</td>
+</tr>
+</tbody>
 </table>
 </div>
+</div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity <span class="op">=</span> pd.merge(wlcnt, pctteams[[<span class="st">'current_team_id'</span>, <span class="st">'hist_franchise_id'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).groupby([<span class="st">'current_team_id'</span>,<span class="st">'city'</span>])[[<span class="st">'W'</span>,<span class="st">'L'</span>,<span class="st">'T'</span>]].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity.loc[wlcntteam_bycity[<span class="st">'city'</span>] <span class="op">==</span> <span class="st">"Montreal"</span>, <span class="st">"current_team_id"</span>] <span class="op">=</span> <span class="st">"MON"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>finaltable_exposfix <span class="op">=</span> pd.merge(wlcntteam_bycity, pctteams, left_on<span class="op">=</span>[<span class="st">'current_team_id'</span>,<span class="st">'city'</span>], right_on<span class="op">=</span>[<span class="st">'hist_franchise_id'</span>,<span class="st">'city'</span>], how<span class="op">=</span><span class="st">"left"</span>).assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>], WnPct <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">100</span><span class="op">*</span><span class="bu">round</span>(x[<span class="st">'W'</span>]<span class="op">/</span>(x[<span class="st">'W'</span>]<span class="op">+</span>x[<span class="st">'L'</span>]<span class="op">+</span>x[<span class="st">'T'</span>]), <span class="dv">3</span>)).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>,<span class="st">'T'</span>:<span class="st">'Ties'</span>, <span class="st">'WnPct'</span>:<span class="st">'Win (%)'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>,<span class="st">'Ties'</span>, <span class="st">'Win (%)'</span>]].sort_values(<span class="st">"Win (%)"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>HTML(finaltable_exposfix.to_html(index<span class="op">=</span><span class="va">False</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity <span class="op">=</span> pd.merge(wlcnt, pctteams[[<span class="st">'current_team_id'</span>, <span class="st">'hist_franchise_id'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).groupby([<span class="st">'current_team_id'</span>,<span class="st">'city'</span>])[[<span class="st">'W'</span>,<span class="st">'L'</span>,<span class="st">'T'</span>]].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity.loc[wlcntteam_bycity[<span class="st">'city'</span>] <span class="op">==</span> <span class="st">"Montreal"</span>, <span class="st">"current_team_id"</span>] <span class="op">=</span> <span class="st">"MON"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>finaltable_exposfix <span class="op">=</span> pd.merge(wlcntteam_bycity, pctteams, left_on<span class="op">=</span>[<span class="st">'current_team_id'</span>,<span class="st">'city'</span>], right_on<span class="op">=</span>[<span class="st">'hist_franchise_id'</span>,<span class="st">'city'</span>], how<span class="op">=</span><span class="st">"left"</span>).assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>], WnPct <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">100</span><span class="op">*</span><span class="bu">round</span>(x[<span class="st">'W'</span>]<span class="op">/</span>(x[<span class="st">'W'</span>]<span class="op">+</span>x[<span class="st">'L'</span>]<span class="op">+</span>x[<span class="st">'T'</span>]), <span class="dv">3</span>)).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>,<span class="st">'T'</span>:<span class="st">'Ties'</span>, <span class="st">'WnPct'</span>:<span class="st">'Win (%)'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>,<span class="st">'Ties'</span>, <span class="st">'Win (%)'</span>]].sort_values(<span class="st">"Win (%)"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>HTML(finaltable_exposfix.to_html(index<span class="op">=</span><span class="va">False</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div id="tbl-openingday-winpct-exposfix" class="anchored">
-
-<table class="dataframe table table-sm table-striped"><caption>Table&nbsp;2:  Opening Day Records, 1980 – 2022, Expos and Nationals separated </caption>
-  <thead>
-    <tr>
-      <th>Team</th>
-      <th>Wins</th>
-      <th>Losses</th>
-      <th>Ties</th>
-      <th>Win (%)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>New York Mets</td>
-      <td>31.0</td>
-      <td>12.0</td>
-      <td>0.0</td>
-      <td>72.1</td>
-    </tr>
-    <tr>
-      <td>Baltimore Orioles</td>
-      <td>28.0</td>
-      <td>15.0</td>
-      <td>0.0</td>
-      <td>65.1</td>
-    </tr>
-    <tr>
-      <td>Seattle Mariners</td>
-      <td>26.0</td>
-      <td>17.0</td>
-      <td>0.0</td>
-      <td>60.5</td>
-    </tr>
-    <tr>
-      <td>Chicago White Sox</td>
-      <td>25.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>58.1</td>
-    </tr>
-    <tr>
-      <td>Los Angeles Dodgers</td>
-      <td>25.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>58.1</td>
-    </tr>
-    <tr>
-      <td>Detroit Tigers</td>
-      <td>25.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>58.1</td>
-    </tr>
-    <tr>
-      <td>Cincinnati Reds</td>
-      <td>24.0</td>
-      <td>18.0</td>
-      <td>1.0</td>
-      <td>55.8</td>
-    </tr>
-    <tr>
-      <td>Toronto Blue Jays</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>Houston Astros</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>St. Louis Cardinals</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>San Francisco Giants</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>New York Yankees</td>
-      <td>23.0</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>53.5</td>
-    </tr>
-    <tr>
-      <td>Colorado Rockies</td>
-      <td>16.0</td>
-      <td>14.0</td>
-      <td>0.0</td>
-      <td>53.3</td>
-    </tr>
-    <tr>
-      <td>Tampa Bay Rays</td>
-      <td>13.0</td>
-      <td>12.0</td>
-      <td>0.0</td>
-      <td>52.0</td>
-    </tr>
-    <tr>
-      <td>Arizona Diamondbacks</td>
-      <td>13.0</td>
-      <td>12.0</td>
-      <td>0.0</td>
-      <td>52.0</td>
-    </tr>
-    <tr>
-      <td>Atlanta Braves</td>
-      <td>22.0</td>
-      <td>21.0</td>
-      <td>0.0</td>
-      <td>51.2</td>
-    </tr>
-    <tr>
-      <td>Milwaukee Brewers</td>
-      <td>22.0</td>
-      <td>20.0</td>
-      <td>1.0</td>
-      <td>51.2</td>
-    </tr>
-    <tr>
-      <td>Chicago Cubs</td>
-      <td>21.0</td>
-      <td>22.0</td>
-      <td>0.0</td>
-      <td>48.8</td>
-    </tr>
-    <tr>
-      <td>Montreal Expos</td>
-      <td>12.0</td>
-      <td>13.0</td>
-      <td>0.0</td>
-      <td>48.0</td>
-    </tr>
-    <tr>
-      <td>Pittsburgh Pirates</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Los Angeles Angels</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Boston Red Sox</td>
-      <td>20.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>46.5</td>
-    </tr>
-    <tr>
-      <td>Washington Nationals</td>
-      <td>8.0</td>
-      <td>10.0</td>
-      <td>0.0</td>
-      <td>44.4</td>
-    </tr>
-    <tr>
-      <td>Texas Rangers</td>
-      <td>19.0</td>
-      <td>24.0</td>
-      <td>0.0</td>
-      <td>44.2</td>
-    </tr>
-    <tr>
-      <td>Miami Marlins</td>
-      <td>12.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <td>Philadelphia Phillies</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>San Diego Padres</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>Oakland Athletics</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>Minnesota Twins</td>
-      <td>17.0</td>
-      <td>26.0</td>
-      <td>0.0</td>
-      <td>39.5</td>
-    </tr>
-    <tr>
-      <td>Cleveland Indians</td>
-      <td>16.0</td>
-      <td>27.0</td>
-      <td>0.0</td>
-      <td>37.2</td>
-    </tr>
-    <tr>
-      <td>Kansas City Royals</td>
-      <td>15.0</td>
-      <td>28.0</td>
-      <td>0.0</td>
-      <td>34.9</td>
-    </tr>
-  </tbody>
+<div id="tbl-openingday-winpct-exposfix" class="cell quarto-float anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-openingday-winpct-exposfix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Opening Day Records, 1980 – 2022, Expos and Nationals separated
+</figcaption>
+<div aria-describedby="tbl-openingday-winpct-exposfix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<table class="dataframe do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Team</th>
+<th data-quarto-table-cell-role="th">Wins</th>
+<th data-quarto-table-cell-role="th">Losses</th>
+<th data-quarto-table-cell-role="th">Ties</th>
+<th data-quarto-table-cell-role="th">Win (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New York Mets</td>
+<td>31.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>72.1</td>
+</tr>
+<tr class="even">
+<td>Baltimore Orioles</td>
+<td>28.0</td>
+<td>15.0</td>
+<td>0.0</td>
+<td>65.1</td>
+</tr>
+<tr class="odd">
+<td>Seattle Mariners</td>
+<td>26.0</td>
+<td>17.0</td>
+<td>0.0</td>
+<td>60.5</td>
+</tr>
+<tr class="even">
+<td>Chicago White Sox</td>
+<td>25.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>58.1</td>
+</tr>
+<tr class="odd">
+<td>Los Angeles Dodgers</td>
+<td>25.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>58.1</td>
+</tr>
+<tr class="even">
+<td>Detroit Tigers</td>
+<td>25.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>58.1</td>
+</tr>
+<tr class="odd">
+<td>Cincinnati Reds</td>
+<td>24.0</td>
+<td>18.0</td>
+<td>1.0</td>
+<td>55.8</td>
+</tr>
+<tr class="even">
+<td>Toronto Blue Jays</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>Houston Astros</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="even">
+<td>St. Louis Cardinals</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>San Francisco Giants</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="even">
+<td>New York Yankees</td>
+<td>23.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>Colorado Rockies</td>
+<td>16.0</td>
+<td>14.0</td>
+<td>0.0</td>
+<td>53.3</td>
+</tr>
+<tr class="even">
+<td>Tampa Bay Rays</td>
+<td>13.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>52.0</td>
+</tr>
+<tr class="odd">
+<td>Arizona Diamondbacks</td>
+<td>13.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>52.0</td>
+</tr>
+<tr class="even">
+<td>Atlanta Braves</td>
+<td>22.0</td>
+<td>21.0</td>
+<td>0.0</td>
+<td>51.2</td>
+</tr>
+<tr class="odd">
+<td>Milwaukee Brewers</td>
+<td>22.0</td>
+<td>20.0</td>
+<td>1.0</td>
+<td>51.2</td>
+</tr>
+<tr class="even">
+<td>Chicago Cubs</td>
+<td>21.0</td>
+<td>22.0</td>
+<td>0.0</td>
+<td>48.8</td>
+</tr>
+<tr class="odd">
+<td>Montreal Expos</td>
+<td>12.0</td>
+<td>13.0</td>
+<td>0.0</td>
+<td>48.0</td>
+</tr>
+<tr class="even">
+<td>Pittsburgh Pirates</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="odd">
+<td>Los Angeles Angels</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="even">
+<td>Boston Red Sox</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>46.5</td>
+</tr>
+<tr class="odd">
+<td>Washington Nationals</td>
+<td>8.0</td>
+<td>10.0</td>
+<td>0.0</td>
+<td>44.4</td>
+</tr>
+<tr class="even">
+<td>Texas Rangers</td>
+<td>19.0</td>
+<td>24.0</td>
+<td>0.0</td>
+<td>44.2</td>
+</tr>
+<tr class="odd">
+<td>Miami Marlins</td>
+<td>12.0</td>
+<td>18.0</td>
+<td>0.0</td>
+<td>40.0</td>
+</tr>
+<tr class="even">
+<td>Philadelphia Phillies</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="odd">
+<td>San Diego Padres</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="even">
+<td>Oakland Athletics</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="odd">
+<td>Minnesota Twins</td>
+<td>17.0</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>39.5</td>
+</tr>
+<tr class="even">
+<td>Cleveland Indians</td>
+<td>16.0</td>
+<td>27.0</td>
+<td>0.0</td>
+<td>37.2</td>
+</tr>
+<tr class="odd">
+<td>Kansas City Royals</td>
+<td>15.0</td>
+<td>28.0</td>
+<td>0.0</td>
+<td>34.9</td>
+</tr>
+</tbody>
 </table>
 </div>
+</div>
+</div>
+</figure>
 </div>
 </div>
 
@@ -821,6 +824,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -889,13 +919,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -922,9 +954,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1011,10 +1057,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1024,8 +1069,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1040,6 +1094,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1079,126 +1365,127 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Revisiting Opening Day Win-Loss Statistics"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-03-04</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#date-modified: 2023-03-04</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [baseball, code, ]</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "patrick_corbin.jpg"</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="an">fig-cap-location:</span><span class="co"> bottom</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="an">tbl-cap-location:</span><span class="co"> top</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Revisiting Opening Day win-loss statistics with new data and new methods"</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    # embed-resources: false</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>I wanted to revisit my <span class="co">[</span><span class="ot">earlier post</span><span class="co">](../../../2015/04/opening-day/index.qmd)</span> about opening day win-loss statistics to update the numbers with eight additional years of data and also to fix the a few issues that I didn't have the skills to address back in 2015.</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>First, my old script had separate entries for the two teams that renamed themselves during the period --- the Los Angeles (California) Angels and the Miami (Floria) Marlins. I wanted those combined, no question. I also wondered about what to do with a franchise that renamed itself and moved. Should the Expos and the Nationals really get combined into a single franchise record? </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>My first attempts to fix the former and keep the Nats/Expos apart were unsuccessful. I combined the renamed teams by creating the win-loss records by <span class="in">`team_id`</span> (as before), but then merging those with the historical franchise ID (<span class="in">`hist_franchise_id`</span>, as before) *and* bringing over the <span class="in">`current_team_id`</span> as well. </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-openingday-winpct</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Opening Day Records, 1980 -- 2022"</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, requests, zipfile, io</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, Markdown</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#from itables import show</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>DATADIR <span class="op">=</span> os.path.join(os.getenv(<span class="st">"MY_PROJECT_DIR"</span>), <span class="st">"data"</span>, <span class="st">"gl"</span>)</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>YEARSTART, YEAREND <span class="op">=</span> <span class="dv">1980</span>, <span class="dv">2022</span> <span class="co"># will add +1 to YEAREND for range()</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(DATADIR):</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    os.makedirs(DATADIR)</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(os.path.join(DATADIR,<span class="st">"CurrentNames.csv"</span>)):</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(<span class="st">"https://www.retrosheet.org/CurrentNames.csv"</span>)</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(os.path.join(DATADIR,<span class="st">"CurrentNames.csv"</span>),<span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="st">"current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        f.write(r.text)</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(YEARSTART,YEAREND<span class="op">+</span><span class="dv">1</span>): </span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(os.path.join(DATADIR,<span class="ss">f"gl</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.txt"</span>)):</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        zip_file_url <span class="op">=</span> <span class="ss">f"https://www.retrosheet.org/gamelogs/gl</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.zip"</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(zip_file_url)</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> zipfile.ZipFile(io.BytesIO(r.content))</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        z.extractall(path<span class="op">=</span>DATADIR)</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [<span class="st">'date'</span>,<span class="st">'visit_team_id'</span>,<span class="st">'visit_team_league'</span>,<span class="st">'visit_game_number'</span>,<span class="st">'home_team_id'</span>,<span class="st">'home_team_league'</span>,<span class="st">'home_game_number'</span>,<span class="st">'visit_final_score'</span>,<span class="st">'home_final_score'</span>]</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assign_outcome(row):</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row.final_score<span class="op">&gt;</span>row.opponent_final_score:</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'W'</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row.final_score<span class="op">&lt;</span>row.opponent_final_score:</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'L'</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'T'</span> <span class="co"># 2000's opening of Reds vs Brewers ended in an official tie</span></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_in_data(year):</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    dat <span class="op">=</span> pd.read_csv(<span class="ss">f"</span><span class="sc">{</span>DATADIR<span class="sc">}</span><span class="ss">/gl</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.txt"</span>, header<span class="op">=</span><span class="va">None</span>,names<span class="op">=</span>fields, usecols<span class="op">=</span>cols, parse_dates<span class="op">=</span>[<span class="st">'date'</span>])</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> dat.loc[dat.visit_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">'opponent_'</span>))</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> dat.loc[dat.home_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">'opponent_'</span>))</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>    games <span class="op">=</span> pd.concat([v,h], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'outcome'</span>] <span class="op">=</span> games.<span class="bu">apply</span>(assign_outcome,axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'season'</span>] <span class="op">=</span> year</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> games</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>teamnames <span class="op">=</span> pd.read_csv(os.path.join(DATADIR,<span class="st">'CurrentNames.csv'</span>), parse_dates<span class="op">=</span>[<span class="st">'first_used'</span>,<span class="st">'last_used'</span>]) </span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>dflist <span class="op">=</span> []</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(YEARSTART,YEAREND<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> read_in_data(year)</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>    dflist.append(g)</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># df = pd.concat([df,g], ignore_index=True)</span></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat(dflist, ignore_index<span class="op">=</span><span class="va">True</span>, sort<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="co"># def f(group):</span></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="co">#     return pd.DataFrame({'count': group.value_counts(),</span></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="co">#                          'total': group.size})</span></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>winpct <span class="op">=</span> (df.groupby(<span class="st">'team_id'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.outcome.value_counts()<span class="op">/</span>x.outcome.size).<span class="bu">round</span>(<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>)[:,<span class="st">"W"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>wlcnt <span class="op">=</span> df.groupby(<span class="st">'team_id'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.outcome.value_counts()).unstack(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="co"># drop any team name that was last_used before the start of our analysis. </span></span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="co"># "Drop duplicates" by current_team_id and hist_franchise_id will get rid of divisional changes (e.g. Pirates moving from NL E to NL C in 1994) and minor name changes (TBA Devil Rays --&gt; Rays; Anaheim Angles --&gt; LA Angels)</span></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>pctteams <span class="op">=</span> teamnames[(teamnames[<span class="st">'last_used'</span>].dt.year<span class="op">&gt;</span>YEARSTART)<span class="op">|</span>(teamnames[<span class="st">'last_used'</span>].isna())].drop_duplicates(subset<span class="op">=</span>[<span class="st">'current_team_id'</span>,<span class="st">'hist_franchise_id'</span>], keep<span class="op">=</span><span class="st">"last"</span>) </span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>wlcntteam <span class="op">=</span> pd.merge(wlcnt, pctteams[[<span class="st">'current_team_id'</span>, <span class="st">'hist_franchise_id'</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).groupby([<span class="st">'current_team_id'</span>])[[<span class="st">'W'</span>,<span class="st">'L'</span>,<span class="st">'T'</span>]].<span class="bu">sum</span>()</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>finaltable <span class="op">=</span> pd.merge(wlcntteam, pctteams, left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>], WnPct <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">100</span><span class="op">*</span><span class="bu">round</span>(x[<span class="st">'W'</span>]<span class="op">/</span>(x[<span class="st">'W'</span>]<span class="op">+</span>x[<span class="st">'L'</span>]<span class="op">+</span>x[<span class="st">'T'</span>]), <span class="dv">3</span>)).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>,<span class="st">'T'</span>:<span class="st">'Ties'</span>, <span class="st">'WnPct'</span>:<span class="st">'Win (%)'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>, <span class="st">'Ties'</span>, <span class="st">'Win (%)'</span>]].sort_values(<span class="st">"Win (%)"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>HTML(finaltable.to_html(index<span class="op">=</span><span class="va">False</span>))  </span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-openingday-winpct-exposfix</span></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Opening Day Records, 1980 -- 2022, Expos and Nationals separated"</span></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity <span class="op">=</span> pd.merge(wlcnt, pctteams[[<span class="st">'current_team_id'</span>, <span class="st">'hist_franchise_id'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).groupby([<span class="st">'current_team_id'</span>,<span class="st">'city'</span>])[[<span class="st">'W'</span>,<span class="st">'L'</span>,<span class="st">'T'</span>]].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity.loc[wlcntteam_bycity[<span class="st">'city'</span>] <span class="op">==</span> <span class="st">"Montreal"</span>, <span class="st">"current_team_id"</span>] <span class="op">=</span> <span class="st">"MON"</span></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>finaltable_exposfix <span class="op">=</span> pd.merge(wlcntteam_bycity, pctteams, left_on<span class="op">=</span>[<span class="st">'current_team_id'</span>,<span class="st">'city'</span>], right_on<span class="op">=</span>[<span class="st">'hist_franchise_id'</span>,<span class="st">'city'</span>], how<span class="op">=</span><span class="st">"left"</span>).assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>], WnPct <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">100</span><span class="op">*</span><span class="bu">round</span>(x[<span class="st">'W'</span>]<span class="op">/</span>(x[<span class="st">'W'</span>]<span class="op">+</span>x[<span class="st">'L'</span>]<span class="op">+</span>x[<span class="st">'T'</span>]), <span class="dv">3</span>)).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>,<span class="st">'T'</span>:<span class="st">'Ties'</span>, <span class="st">'WnPct'</span>:<span class="st">'Win (%)'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>,<span class="st">'Ties'</span>, <span class="st">'Win (%)'</span>]].sort_values(<span class="st">"Win (%)"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>HTML(finaltable_exposfix.to_html(index<span class="op">=</span><span class="va">False</span>))  </span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Revisiting Opening Day Win-Loss Statistics"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-03-04</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#date-modified: 2023-03-04</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [baseball, code, ]</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "patrick_corbin.jpg"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="an">fig-cap-location:</span><span class="co"> bottom</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="an">tbl-cap-location:</span><span class="co"> top</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Revisiting Opening Day win-loss statistics with new data and new methods"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    # embed-resources: false</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>I wanted to revisit my <span class="co">[</span><span class="ot">earlier post</span><span class="co">](../../../2015/04/opening-day/index.qmd)</span> about opening day win-loss statistics to update the numbers with eight additional years of data and also to fix the a few issues that I didn't have the skills to address back in 2015.</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>First, my old script had separate entries for the two teams that renamed themselves during the period --- the Los Angeles (California) Angels and the Miami (Florida) Marlins. I wanted those combined, no question. I also wondered about what to do with a franchise that renamed itself and moved. Should the Expos and the Nationals really get combined into a single franchise record? </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>My first attempts to fix the former and keep the Nats/Expos apart were unsuccessful. I combined the renamed teams by creating the win-loss records by <span class="in">`team_id`</span> (as before), but then merging those with the historical franchise ID (<span class="in">`hist_franchise_id`</span>, as before) *and* bringing over the <span class="in">`current_team_id`</span> as well. </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-openingday-winpct</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Opening Day Records, 1980 -- 2022"</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, requests, zipfile, io</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, Markdown</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#from itables import show</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>DATADIR <span class="op">=</span> os.path.join(os.getenv(<span class="st">"MY_PROJECT_DIR"</span>), <span class="st">"data"</span>, <span class="st">"gl"</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>YEARSTART, YEAREND <span class="op">=</span> <span class="dv">1980</span>, <span class="dv">2022</span> <span class="co"># will add +1 to YEAREND for range()</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(DATADIR):</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    os.makedirs(DATADIR)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(os.path.join(DATADIR,<span class="st">"CurrentNames.csv"</span>)):</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(<span class="st">"https://www.retrosheet.org/CurrentNames.csv"</span>)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(os.path.join(DATADIR,<span class="st">"CurrentNames.csv"</span>),<span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="st">"current_team_id,hist_franchise_id,league,division,location,nickname,alt_nickname,first_used,last_used,city,state</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        f.write(r.text)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(YEARSTART,YEAREND<span class="op">+</span><span class="dv">1</span>): </span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(os.path.join(DATADIR,<span class="ss">f"gl</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.txt"</span>)):</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        zip_file_url <span class="op">=</span> <span class="ss">f"https://www.retrosheet.org/gamelogs/gl</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.zip"</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(zip_file_url)</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> zipfile.ZipFile(io.BytesIO(r.content))</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        z.extractall(path<span class="op">=</span>DATADIR)</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [<span class="st">'date'</span>,<span class="st">'visit_team_id'</span>,<span class="st">'visit_team_league'</span>,<span class="st">'visit_game_number'</span>,<span class="st">'home_team_id'</span>,<span class="st">'home_team_league'</span>,<span class="st">'home_game_number'</span>,<span class="st">'visit_final_score'</span>,<span class="st">'home_final_score'</span>]</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assign_outcome(row):</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row.final_score<span class="op">&gt;</span>row.opponent_final_score:</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'W'</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row.final_score<span class="op">&lt;</span>row.opponent_final_score:</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'L'</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'T'</span> <span class="co"># 2000's opening of Reds vs Brewers ended in an official tie</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_in_data(year):</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    dat <span class="op">=</span> pd.read_csv(<span class="ss">f"</span><span class="sc">{</span>DATADIR<span class="sc">}</span><span class="ss">/gl</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.txt"</span>, header<span class="op">=</span><span class="va">None</span>,names<span class="op">=</span>fields, usecols<span class="op">=</span>cols, parse_dates<span class="op">=</span>[<span class="st">'date'</span>])</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> dat.loc[dat.visit_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">'opponent_'</span>))</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> dat.loc[dat.home_game_number<span class="op">==</span><span class="dv">1</span>,].rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'home_'</span>,<span class="st">''</span>)).rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.replace(<span class="st">'visit_'</span>,<span class="st">'opponent_'</span>))</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    games <span class="op">=</span> pd.concat([v,h], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'outcome'</span>] <span class="op">=</span> games.<span class="bu">apply</span>(assign_outcome,axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    games[<span class="st">'season'</span>] <span class="op">=</span> year</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> games</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>teamnames <span class="op">=</span> pd.read_csv(os.path.join(DATADIR,<span class="st">'CurrentNames.csv'</span>), parse_dates<span class="op">=</span>[<span class="st">'first_used'</span>,<span class="st">'last_used'</span>]) </span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>dflist <span class="op">=</span> []</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(YEARSTART,YEAREND<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> read_in_data(year)</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    dflist.append(g)</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># df = pd.concat([df,g], ignore_index=True)</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat(dflist, ignore_index<span class="op">=</span><span class="va">True</span>, sort<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="co"># def f(group):</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="co">#     return pd.DataFrame({'count': group.value_counts(),</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co">#                          'total': group.size})</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>winpct <span class="op">=</span> (df.groupby(<span class="st">'team_id'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.outcome.value_counts()<span class="op">/</span>x.outcome.size).<span class="bu">round</span>(<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>)[:,<span class="st">"W"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>wlcnt <span class="op">=</span> df.groupby(<span class="st">'team_id'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.outcome.value_counts()).unstack(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co"># drop any team name that was last_used before the start of our analysis. </span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co"># "Drop duplicates" by current_team_id and hist_franchise_id will get rid of divisional changes (e.g. Pirates moving from NL E to NL C in 1994) and minor name changes (TBA Devil Rays --&gt; Rays; Anaheim Angles --&gt; LA Angels)</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>pctteams <span class="op">=</span> teamnames[(teamnames[<span class="st">'last_used'</span>].dt.year<span class="op">&gt;</span>YEARSTART)<span class="op">|</span>(teamnames[<span class="st">'last_used'</span>].isna())].drop_duplicates(subset<span class="op">=</span>[<span class="st">'current_team_id'</span>,<span class="st">'hist_franchise_id'</span>], keep<span class="op">=</span><span class="st">"last"</span>) </span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>wlcntteam <span class="op">=</span> pd.merge(wlcnt, pctteams[[<span class="st">'current_team_id'</span>, <span class="st">'hist_franchise_id'</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).groupby([<span class="st">'current_team_id'</span>])[[<span class="st">'W'</span>,<span class="st">'L'</span>,<span class="st">'T'</span>]].<span class="bu">sum</span>()</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>finaltable <span class="op">=</span> pd.merge(wlcntteam, pctteams, left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>], WnPct <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">100</span><span class="op">*</span><span class="bu">round</span>(x[<span class="st">'W'</span>]<span class="op">/</span>(x[<span class="st">'W'</span>]<span class="op">+</span>x[<span class="st">'L'</span>]<span class="op">+</span>x[<span class="st">'T'</span>]), <span class="dv">3</span>)).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>,<span class="st">'T'</span>:<span class="st">'Ties'</span>, <span class="st">'WnPct'</span>:<span class="st">'Win (%)'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>, <span class="st">'Ties'</span>, <span class="st">'Win (%)'</span>]].sort_values(<span class="st">"Win (%)"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>HTML(finaltable.to_html(index<span class="op">=</span><span class="va">False</span>))  </span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-openingday-winpct-exposfix</span></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Opening Day Records, 1980 -- 2022, Expos and Nationals separated"</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity <span class="op">=</span> pd.merge(wlcnt, pctteams[[<span class="st">'current_team_id'</span>, <span class="st">'hist_franchise_id'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">'hist_franchise_id'</span>, how<span class="op">=</span><span class="st">"left"</span>).groupby([<span class="st">'current_team_id'</span>,<span class="st">'city'</span>])[[<span class="st">'W'</span>,<span class="st">'L'</span>,<span class="st">'T'</span>]].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>wlcntteam_bycity.loc[wlcntteam_bycity[<span class="st">'city'</span>] <span class="op">==</span> <span class="st">"Montreal"</span>, <span class="st">"current_team_id"</span>] <span class="op">=</span> <span class="st">"MON"</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>finaltable_exposfix <span class="op">=</span> pd.merge(wlcntteam_bycity, pctteams, left_on<span class="op">=</span>[<span class="st">'current_team_id'</span>,<span class="st">'city'</span>], right_on<span class="op">=</span>[<span class="st">'hist_franchise_id'</span>,<span class="st">'city'</span>], how<span class="op">=</span><span class="st">"left"</span>).assign(Team <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'location'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> x[<span class="st">'nickname'</span>], WnPct <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">100</span><span class="op">*</span><span class="bu">round</span>(x[<span class="st">'W'</span>]<span class="op">/</span>(x[<span class="st">'W'</span>]<span class="op">+</span>x[<span class="st">'L'</span>]<span class="op">+</span>x[<span class="st">'T'</span>]), <span class="dv">3</span>)).rename(columns<span class="op">=</span>{<span class="st">'W'</span>:<span class="st">'Wins'</span>,<span class="st">'L'</span>:<span class="st">'Losses'</span>,<span class="st">'T'</span>:<span class="st">'Ties'</span>, <span class="st">'WnPct'</span>:<span class="st">'Win (%)'</span>})[[<span class="st">'Team'</span>,<span class="st">'Wins'</span>,<span class="st">'Losses'</span>,<span class="st">'Ties'</span>, <span class="st">'Win (%)'</span>]].sort_values(<span class="st">"Win (%)"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>HTML(finaltable_exposfix.to_html(index<span class="op">=</span><span class="va">False</span>))  </span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/mattspence/mattspence.github.io/edit/main/posts/2023/03/opening-day-revisited/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mattspence/mattspence.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
