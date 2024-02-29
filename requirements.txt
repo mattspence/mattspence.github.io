@@ -1,0 +1,13 @@
+beautifulsoup4
+bokeh
+geopandas
+itables
+jupyter
+matplotlib
+numpy
+pandas
+plotly
+pygris
+requests
+scipy
+seaborn
